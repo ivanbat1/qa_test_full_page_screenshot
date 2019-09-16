@@ -4,8 +4,8 @@ from io import BytesIO
 
 verbose = 1
 
+
 def full_screenshot(driver, save_path, file_name):
-    # initiate value
     save_path = save_path + '.png' if save_path[-4::] != '.png' else save_path
     img_li = []  # to store image fragment
     offset = 0  # where to start
@@ -58,6 +58,12 @@ def go_to_page_make_screenshot(driver, url, ranger, file_name, js_file):
 
 def create_dir(file_name):
     try:
-        os.mkdir('{}'.format(file_name))
+        os.makedirs('{}'.format(file_name))
     except FileExistsError:
         print('file exist')
+
+
+def make_size(string):
+    size = string.split('x')
+    return (size[0], size[1])
+
