@@ -42,11 +42,12 @@ def full_screenshot(driver, save_path, file_name):
 
 
 def get_all_url_page(driver):
+    print(driver.current_url)
     href_list = list()
     elems = driver.find_elements_by_xpath("//a[@href]")
     for elem in elems:
-        if elem.get_attribute("href").startswith('http://'):
-            href_list.append(elem.get_attribute("href"))
+        # if elem.get_attribute("href").startswith('https://' or 'http://'):
+        href_list.append(elem.get_attribute("href"))
     return list(set(href_list))
 
 
